@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <data>
+        <variable
+            name="contactViewModel"
+            type="com.example.contactappkotlinroom.viewmodel.ContactViewModel" />
+
+        
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/main"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:onClick="@{() -> contactViewModel.saveOrUpdate()}"
+                android:text="@={contactViewModel.saveOrUpdateButtonText}"
+                android:id="@+id/btn1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:onClick="@{() ->contactViewModel.clearAllorDelete()}"
+                android:text="@={contactViewModel.clearAllDeleteButtonText}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn1"
+                android:layout_marginEnd="42dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/btn2"/>
+
+
+            <EditText
+                android:id="@+id/edittext"
+                android:layout_width="150dp"
+                android:text="@={contactViewModel.inputName}"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:hint="enter your name" />
+
+            <EditText
+                android:text="@={contactViewModel.inputEmail}"
+                android:id="@+id/editEmail"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/edittext"
+                app:layout_constraintStart_toStartOf="parent"
+                android:hint="enter Your Email"
+                android:layout_marginStart="16dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout2"/>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

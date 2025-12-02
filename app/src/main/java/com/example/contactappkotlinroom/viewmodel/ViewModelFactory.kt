@@ -1,0 +1,19 @@
+package com.example.contactappkotlinroom.viewmodel
+
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import com.example.contactappkotlinroom.repository.ContactRepository
+import kotlin.jvm.Throws
+
+class ViewModelFactory(private val repository: ContactRepository):ViewModelProvider.Factory {
+
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if(modelClass.isAssignableFrom(ContactViewModel::class.java)){
+            return ContactViewModel(repository)as T
+        }
+        throw IllegalArgumentException("Unknow View Model")
+    }
+
+
+
+}
